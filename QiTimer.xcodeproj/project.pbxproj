@@ -1,0 +1,380 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1405A7B922D355240053BF24 /* QiGCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1405A7B822D355240053BF24 /* QiGCDTimer.m */; };
+		1405A7BC22D47A8B0053BF24 /* TPPreciseTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1405A7BB22D47A8B0053BF24 /* TPPreciseTimer.m */; };
+		140921B022CB0A2C00595AFF /* QiCADisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 140921AE22CB0A2C00595AFF /* QiCADisplayLink.m */; };
+		14EF590A22CAB4D7008E2DE6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EF590922CAB4D7008E2DE6 /* AppDelegate.m */; };
+		14EF590D22CAB4D7008E2DE6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EF590C22CAB4D7008E2DE6 /* ViewController.m */; };
+		14EF591222CAB4DA008E2DE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14EF591122CAB4DA008E2DE6 /* Assets.xcassets */; };
+		14EF591522CAB4DA008E2DE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14EF591322CAB4DA008E2DE6 /* LaunchScreen.storyboard */; };
+		14EF591822CAB4DA008E2DE6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EF591722CAB4DA008E2DE6 /* main.m */; };
+		14EF592022CAB6A2008E2DE6 /* QiNSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EF591F22CAB6A2008E2DE6 /* QiNSTimer.m */; };
+		14EF592922CAB9DB008E2DE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EF592822CAB9DB008E2DE6 /* Foundation.framework */; };
+		14EF592B22CAC402008E2DE6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EF592A22CAC402008E2DE6 /* libc++.tbd */; };
+		14EF592D22CAC412008E2DE6 /* libc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EF592C22CAC412008E2DE6 /* libc.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1405A7B722D355240053BF24 /* QiGCDTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiGCDTimer.h; sourceTree = "<group>"; };
+		1405A7B822D355240053BF24 /* QiGCDTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiGCDTimer.m; sourceTree = "<group>"; };
+		1405A7BA22D47A8B0053BF24 /* TPPreciseTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPPreciseTimer.h; sourceTree = "<group>"; };
+		1405A7BB22D47A8B0053BF24 /* TPPreciseTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPPreciseTimer.m; sourceTree = "<group>"; };
+		140921A922CAFAEC00595AFF /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		140921AB22CAFB5700595AFF /* libMatch.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libMatch.tbd; path = usr/lib/libMatch.tbd; sourceTree = SDKROOT; };
+		140921AE22CB0A2C00595AFF /* QiCADisplayLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCADisplayLink.m; sourceTree = "<group>"; };
+		140921AF22CB0A2C00595AFF /* QiCADisplayLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiCADisplayLink.h; sourceTree = "<group>"; };
+		14EF590522CAB4D7008E2DE6 /* QiTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14EF590822CAB4D7008E2DE6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		14EF590922CAB4D7008E2DE6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		14EF590B22CAB4D7008E2DE6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		14EF590C22CAB4D7008E2DE6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		14EF591122CAB4DA008E2DE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		14EF591422CAB4DA008E2DE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		14EF591622CAB4DA008E2DE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14EF591722CAB4DA008E2DE6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		14EF591E22CAB6A2008E2DE6 /* QiNSTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiNSTimer.h; sourceTree = "<group>"; };
+		14EF591F22CAB6A2008E2DE6 /* QiNSTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiNSTimer.m; sourceTree = "<group>"; };
+		14EF592822CAB9DB008E2DE6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		14EF592A22CAC402008E2DE6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		14EF592C22CAC412008E2DE6 /* libc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libc.tbd; path = usr/lib/libc.tbd; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14EF590222CAB4D7008E2DE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14EF592D22CAC412008E2DE6 /* libc.tbd in Frameworks */,
+				14EF592B22CAC402008E2DE6 /* libc++.tbd in Frameworks */,
+				14EF592922CAB9DB008E2DE6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14EF58FC22CAB4D7008E2DE6 = {
+			isa = PBXGroup;
+			children = (
+				14EF590722CAB4D7008E2DE6 /* QiTimer */,
+				14EF590622CAB4D7008E2DE6 /* Products */,
+				14EF592722CAB9DB008E2DE6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		14EF590622CAB4D7008E2DE6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14EF590522CAB4D7008E2DE6 /* QiTimer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14EF590722CAB4D7008E2DE6 /* QiTimer */ = {
+			isa = PBXGroup;
+			children = (
+				14EF590822CAB4D7008E2DE6 /* AppDelegate.h */,
+				14EF590922CAB4D7008E2DE6 /* AppDelegate.m */,
+				14EF590B22CAB4D7008E2DE6 /* ViewController.h */,
+				14EF590C22CAB4D7008E2DE6 /* ViewController.m */,
+				14EF591E22CAB6A2008E2DE6 /* QiNSTimer.h */,
+				14EF591F22CAB6A2008E2DE6 /* QiNSTimer.m */,
+				1405A7B722D355240053BF24 /* QiGCDTimer.h */,
+				1405A7B822D355240053BF24 /* QiGCDTimer.m */,
+				140921AF22CB0A2C00595AFF /* QiCADisplayLink.h */,
+				140921AE22CB0A2C00595AFF /* QiCADisplayLink.m */,
+				1405A7BA22D47A8B0053BF24 /* TPPreciseTimer.h */,
+				1405A7BB22D47A8B0053BF24 /* TPPreciseTimer.m */,
+				14EF591122CAB4DA008E2DE6 /* Assets.xcassets */,
+				14EF591322CAB4DA008E2DE6 /* LaunchScreen.storyboard */,
+				14EF591622CAB4DA008E2DE6 /* Info.plist */,
+				14EF591722CAB4DA008E2DE6 /* main.m */,
+			);
+			path = QiTimer;
+			sourceTree = "<group>";
+		};
+		14EF592722CAB9DB008E2DE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				140921AB22CAFB5700595AFF /* libMatch.tbd */,
+				140921A922CAFAEC00595AFF /* CoreFoundation.framework */,
+				14EF592C22CAC412008E2DE6 /* libc.tbd */,
+				14EF592A22CAC402008E2DE6 /* libc++.tbd */,
+				14EF592822CAB9DB008E2DE6 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14EF590422CAB4D7008E2DE6 /* QiTimer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14EF591B22CAB4DA008E2DE6 /* Build configuration list for PBXNativeTarget "QiTimer" */;
+			buildPhases = (
+				14EF590122CAB4D7008E2DE6 /* Sources */,
+				14EF590222CAB4D7008E2DE6 /* Frameworks */,
+				14EF590322CAB4D7008E2DE6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QiTimer;
+			productName = QiTimer;
+			productReference = 14EF590522CAB4D7008E2DE6 /* QiTimer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		14EF58FD22CAB4D7008E2DE6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = qishare;
+				TargetAttributes = {
+					14EF590422CAB4D7008E2DE6 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 14EF590022CAB4D7008E2DE6 /* Build configuration list for PBXProject "QiTimer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 14EF58FC22CAB4D7008E2DE6;
+			productRefGroup = 14EF590622CAB4D7008E2DE6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14EF590422CAB4D7008E2DE6 /* QiTimer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		14EF590322CAB4D7008E2DE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14EF591522CAB4DA008E2DE6 /* LaunchScreen.storyboard in Resources */,
+				14EF591222CAB4DA008E2DE6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14EF590122CAB4D7008E2DE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14EF590D22CAB4D7008E2DE6 /* ViewController.m in Sources */,
+				1405A7B922D355240053BF24 /* QiGCDTimer.m in Sources */,
+				14EF591822CAB4DA008E2DE6 /* main.m in Sources */,
+				14EF592022CAB6A2008E2DE6 /* QiNSTimer.m in Sources */,
+				14EF590A22CAB4D7008E2DE6 /* AppDelegate.m in Sources */,
+				1405A7BC22D47A8B0053BF24 /* TPPreciseTimer.m in Sources */,
+				140921B022CB0A2C00595AFF /* QiCADisplayLink.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		14EF591322CAB4DA008E2DE6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14EF591422CAB4DA008E2DE6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		14EF591922CAB4DA008E2DE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		14EF591A22CAB4DA008E2DE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		14EF591C22CAB4DA008E2DE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8ZX24TX624;
+				INFOPLIST_FILE = QiTimer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.qihoo.iot.smartlink;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		14EF591D22CAB4DA008E2DE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8ZX24TX624;
+				INFOPLIST_FILE = QiTimer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.qihoo.iot.smartlink;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14EF590022CAB4D7008E2DE6 /* Build configuration list for PBXProject "QiTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14EF591922CAB4DA008E2DE6 /* Debug */,
+				14EF591A22CAB4DA008E2DE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14EF591B22CAB4DA008E2DE6 /* Build configuration list for PBXNativeTarget "QiTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14EF591C22CAB4DA008E2DE6 /* Debug */,
+				14EF591D22CAB4DA008E2DE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 14EF58FD22CAB4D7008E2DE6 /* Project object */;
+}
