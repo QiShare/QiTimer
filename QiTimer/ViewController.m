@@ -72,19 +72,20 @@
     _timeInterval = [deadlineDate timeIntervalSinceDate:[NSDate date]] * 1000;
    
     
-    // QiNSTimer
-    _timer = [[QiNSTimer alloc] init];
-    [_timer resumeTimer];
+//    // QiNSTimer
+//    _timer = [[QiNSTimer alloc] init];
+//    [_timer resumeTimer];
+
+    // QiGCDTimer
+    _gcdTimer = [QiGCDTimer scheduledTimerWithTimeInterval:0.0001 repeats:YES queue:dispatch_get_main_queue() block:^{
+        
+    }];
 
     
 //    // QiCADisplayLink
 //    _caDisplayLink = [[QiCADisplayLink alloc] init];
 //    [_caDisplayLink startCADisplayLinkTimer];
 //
-//    // QiGCDTimer
-//    _gcdTimer = [QiGCDTimer scheduledTimerWithTimeInterval:0.00001 repeats:YES queue:dispatch_get_main_queue() block:^{
-//
-//    }];
 //
 //    // TPPreciseTimer
 //    [self testTPPreciseTimer];

@@ -13,7 +13,6 @@
 @interface QiNSTimer ()
 
 @property (nonatomic, strong) NSTimer *timer;
-@property (nonatomic, strong) NSLock *lock;
 
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, assign) NSTimeInterval lastTS;
