@@ -28,13 +28,14 @@
 
 @interface ViewController ()
 
+@property(nonatomic, strong) UILabel *countdownLabel;
+
+@property (nonatomic, assign) CGFloat passTime;;
+@property (nonatomic, assign) CFTimeInterval timeInterval;
+
 @property (nonatomic, strong) QiNSTimer *timer;
 @property (nonatomic, strong) QiGCDTimer *gcdTimer;
 @property (nonatomic, strong) QiCADisplayLink *caDisplayLink;
-
-@property (nonatomic, strong) CADisplayLink *displayLink;
-@property (nonatomic, strong) UIView *rotateView;
-@property (nonatomic, assign) CFTimeInterval last;
 
 @end
 
@@ -43,34 +44,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //[self setTitle:@"QiTimer"];
+    [self setTitle:@"QiTimer"];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    _rotateView = [[UIView alloc] initWithFrame:CGRectMake(100, 80, 40, 40)];
-    [_rotateView setBackgroundColor:[UIColor redColor]];
-    [self.view addSubview:_rotateView];
-    
     CGFloat margin = 15;
-    CGFloat offset = 150;
+    CGFloat rowHeight = 30;
     CGSize size = self.view.frame.size;
-    NSArray *titleArr = @[@"NSTimer", @"CADisplayLink", @"GCDTimer", @"RealTimeSchedulingClass&TimingAPI"];
-    for (int i=0; i<titleArr.count; i++) {
-        NSString *title = [titleArr objectAtIndex:i];
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-        button.frame = CGRectMake(margin, offset, size.width - margin * 2, 45);
-        [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:title forState:UIControlStateNormal];
-        [self.view addSubview:button];
-        button.tag = 100 + i;
-        
-        offset += 45 + margin;
-    }
     
+    _countdownLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 100, size.width - 100, rowHeight)];
+    [self.view addSubview:_countdownLabel];
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(15, offset, size.width - 30, 150)];
-    scrollView.backgroundColor = [UIColor lightGrayColor];
-    [self.view addSubview:scrollView];
-    scrollView.contentSize = CGSizeMake(size.width, 1000);
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(margin, 200, size.width - margin * 2, 45);
+    [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"开始倒计时" forState:UIControlStateNormal];
+    [self.view addSubview:button];
 }
 
 
@@ -78,82 +66,143 @@
 
 - (void)buttonClicked:(UIButton *)button {
     
-    switch (button.tag) {
-        case 100:
-            _timer = [[QiNSTimer alloc] init];
-            [_timer startNSTimer];
-            break;
-        case 101:
-            _caDisplayLink = [[QiCADisplayLink alloc] init];
-            [_caDisplayLink startCADisplayLinkTimer];
-            break;
-        case 102:
-            _gcdTimer = [QiGCDTimer scheduledTimerWithTimeInterval:0.00001 repeats:YES queue:dispatch_get_main_queue() block:^{
-                
-            }];
-            break;
-        case 103:
-            [self testTPPreciseTimer];
-            break;
-        default:
-            break;
-    }
+    _passTime = 0.0;
+    NSTimeInterval deadlineTS = [[NSDate date] timeIntervalSince1970] + 3600 * 2;
+    NSDate *deadlineDate = [NSDate dateWithTimeIntervalSince1970:deadlineTS];
+    _timeInterval = [deadlineDate timeIntervalSinceDate:[NSDate date]] * 1000;
+   
     
-}
+    // QiNSTimer
+    _timer = [[QiNSTimer alloc] init];
+    [_timer resumeTimer];
 
-- (void)testTPPreciseTimer {
     
-    struct mach_timebase_info timebase;
-    mach_timebase_info(&timebase);
-    double timebase_ratio = ((double)timebase.numer / (double)timebase.denom) * 1.0e-9;
-    
-    TestObject *testObject = [[TestObject alloc] init];
-    
-    for ( int i=0; i<10; i++ ) {
-        NSTimeInterval duration = ((double)rand()/RAND_MAX) * 2.0;
-        printf("\nDuration: %lf s\n", duration);
-        
-        NSTimeInterval start = mach_absolute_time() * timebase_ratio;
-        
-        [TPPreciseTimer scheduleBlock:^{
-            NSTimeInterval end = mach_absolute_time() * timebase_ratio;
-            printf("TPPreciseTimer deviation:\t%lf s\n", (end-start) - duration);
-        } inTimeInterval:duration];
-        
-        [NSTimer scheduledTimerWithTimeInterval:duration
-                                         target:testObject
-                                       selector:@selector(timerFired:)
-                                       userInfo:^{
-                                           NSTimeInterval end = mach_absolute_time() * timebase_ratio;
-                                           printf("NSTimer deviation:\t\t\t%lf s\n", (end-start) - duration);
-                                       }repeats:NO];
-        
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:duration + 0.1]];
-    }
-    
-    NSTimeInterval start = mach_absolute_time() * timebase_ratio;
-    [TPPreciseTimer scheduleBlock:^{
-        NSTimeInterval end = mach_absolute_time() * timebase_ratio;
-        printf("TPPreciseTimer test pre-empt: Event 2 deviation:\t%lf s\n", (end-start) - 0.4);
-    } inTimeInterval:0.4];
-    
-    [NSThread sleepForTimeInterval:0.1];
-    
-    start = mach_absolute_time() * timebase_ratio;
-    [TPPreciseTimer scheduleBlock:^{
-        NSTimeInterval end = mach_absolute_time() * timebase_ratio;
-        printf("TPPreciseTimer test pre-empt: Event 1 deviation:\t%lf s\n", (end-start) - 0.2);
-    } inTimeInterval:0.2];
-    
-    [TPPreciseTimer scheduleAction:@selector(shouldNotFire) target:testObject inTimeInterval:0.2];
-    [NSThread sleepForTimeInterval:0.1];
-    [TPPreciseTimer cancelAction:@selector(shouldNotFire) target:testObject];
-    
-    [NSThread sleepForTimeInterval:0.5];
+//    // QiCADisplayLink
+//    _caDisplayLink = [[QiCADisplayLink alloc] init];
+//    [_caDisplayLink startCADisplayLinkTimer];
+//
+//    // QiGCDTimer
+//    _gcdTimer = [QiGCDTimer scheduledTimerWithTimeInterval:0.00001 repeats:YES queue:dispatch_get_main_queue() block:^{
+//
+//    }];
+//
+//    // TPPreciseTimer
+//    [self testTPPreciseTimer];
 }
 
 
+
+
+//#pragma mark - QiNSTimerCall
+//
+//- (void)qiNSTimerCall {
+//    
+//    [self getTimeFromTimeInterval:_timeInterval] ;
+//    
+//    if (_timeInterval-_passTime <= 0) {
+//        [_timer pauseTimer] ;
+//    }
+//}
+//
+//// 通过时间间隔计算具体时间(小时,分,秒,毫秒)
+//- (void)getTimeFromTimeInterval : (double)timeInterval {
+//    
+//    //1s=1000毫秒
+//    //毫秒数从0-9，所以每次过去10毫秒
+//    _passTime += QiNSTimerInterval * 1000;
+//    
+//    NSString *hours = [NSString stringWithFormat:@"%ld", (NSInteger)((timeInterval - _passTime) / 1000 / 60 / 60)];
+//    NSString *minute = [NSString stringWithFormat:@"%ld", (NSInteger)((timeInterval - _passTime) / 1000 / 60 ) % 60];
+//    NSString *second = [NSString stringWithFormat:@"%ld", ((NSInteger)(timeInterval - _passTime)) / 1000 % 60];
+//    CGFloat sss = ((NSInteger)((timeInterval - _passTime)))%1000/(QiNSTimerInterval * 1000);
+//    NSString *ss = [NSString stringWithFormat:@"%.lf", sss];
+//    
+//    _countdownLabel.text = [NSString stringWithFormat:@"剩余：%@:%@:%@.%@", hours, minute, second, ss];
+//}
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+//- (void)testTPPreciseTimer {
+//
+//    struct mach_timebase_info timebase;
+//    mach_timebase_info(&timebase);
+//    double timebase_ratio = ((double)timebase.numer / (double)timebase.denom) * 1.0e-9;
+//
+//    TestObject *testObject = [[TestObject alloc] init];
+//
+//    for ( int i=0; i<10; i++ ) {
+//        NSTimeInterval duration = ((double)rand()/RAND_MAX) * 2.0;
+//        printf("\nDuration: %lf s\n", duration);
+//
+//        // 开始时间
+//        NSTimeInterval start = mach_absolute_time() * timebase_ratio;
+//
+//        // TPPreciseTimer定时
+//        [TPPreciseTimer scheduleBlock:^{
+//            NSTimeInterval end = mach_absolute_time() * timebase_ratio;
+//            printf("TPPreciseTimer deviation:\t%lf s\n", (end-start) - duration);
+//        } inTimeInterval:duration];
+//
+//        // TPPreciseTimer定时
+//        [NSTimer scheduledTimerWithTimeInterval:duration
+//                                         target:testObject
+//                                       selector:@selector(timerFired:)
+//                                       userInfo:^{
+//                                           NSTimeInterval end = mach_absolute_time() * timebase_ratio;
+//                                           printf("NSTimer deviation:\t\t\t%lf s\n", (end-start) - duration);
+//                                       }repeats:NO];
+//
+//        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:duration + 0.1]];
+//    }
+//
+//    //    NSTimeInterval start = mach_absolute_time() * timebase_ratio;
+//    //    [TPPreciseTimer scheduleBlock:^{
+//    //        NSTimeInterval end = mach_absolute_time() * timebase_ratio;
+//    //        printf("TPPreciseTimer test pre-empt: Event 2 deviation:\t%lf s\n", (end-start) - 0.4);
+//    //    } inTimeInterval:0.4];
+//    //
+//    //    [NSThread sleepForTimeInterval:0.1];
+//    //
+//    //    start = mach_absolute_time() * timebase_ratio;
+//    //    [TPPreciseTimer scheduleBlock:^{
+//    //        NSTimeInterval end = mach_absolute_time() * timebase_ratio;
+//    //        printf("TPPreciseTimer test pre-empt: Event 1 deviation:\t%lf s\n", (end-start) - 0.2);
+//    //    } inTimeInterval:0.2];
+//    //
+//    //    [TPPreciseTimer scheduleAction:@selector(shouldNotFire) target:testObject inTimeInterval:0.2];
+//    //    [NSThread sleepForTimeInterval:0.1];
+//    //    [TPPreciseTimer cancelAction:@selector(shouldNotFire) target:testObject];
+//    //
+//    //    [NSThread sleepForTimeInterval:0.5];
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

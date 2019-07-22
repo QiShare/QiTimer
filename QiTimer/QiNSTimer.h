@@ -12,9 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QiNSTimer : NSObject
 
-- (void)startNSTimer;
-
-//- (void)testNSTimer;
+- (void)resumeTimer;
+- (void)pauseTimer;
 
 @end
 
