@@ -12,12 +12,9 @@
 @interface QiCADisplayLink ()
 
 @property (nonatomic, strong) CADisplayLink *displayLink;
-@property (nonatomic, assign) NSTimeInterval timeInterval;
 
-@property (nonatomic, strong) NSDate *lastStartTime;
-
-@property (nonatomic, assign) NSInteger currentCount;
-@property (nonatomic, assign) NSInteger maxCount;
+@property (nonatomic, assign) NSInteger count;
+@property (nonatomic, assign) NSTimeInterval lastTS;
 
 @end
 
@@ -28,8 +25,7 @@
 
 - (void)resumeDisplayLink {
 
-    _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(onTimeout:)];
-    //_displayLink.preferredFramesPerSecond = 50;
+    _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(onTimeout)];
     [_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 }
 
@@ -40,51 +36,11 @@
 }
 
 
-
-#pragma mark - Test Methods
-
-- (void)startCADisplayLinkTimer {
+- (void)onTimeout {
     
-    _maxCount = 10;
-    _currentCount = 0;
-    _timeInterval = 0.1;// 100ms
-    
-    [self resumeDisplayLink];
-}
-
-- (void)onTimeout:(NSTimer *)sender {
-    
-    if (_currentCount < _maxCount) {
-        
-        // selector任务开始
-        NSDate *startTime = [NSDate date];
-        NSLog(@"---selector start--->> selectorNo.%ld, startTime:%@, start-start diff:%.3fms", (long)_currentCount, [self getTimeStampStr:startTime], [startTime timeIntervalSinceDate:_lastStartTime]*1000);
-        _lastStartTime = startTime;
-        
-        // 耗时任务
-        if (_currentCount == 8) {
-            NSInteger count = 0;
-            for (int i = 0; i < 1000000000; i++) {
-                count++;
-            }
-        }
-        
-        // selector结束
-        NSDate *endTime = [NSDate date];
-        NSLog(@"---selector ended--->> selectorNo.%ld, endTime:%@, end-start diff:%.3fms", (long)_currentCount, [self getTimeStampStr:endTime], [endTime timeIntervalSinceDate:startTime]*1000);
-        
-        _currentCount++;
-    } else {
-        [self pauseDisplayLink];
-    }
-}
-
-- (NSString *)getTimeStampStr:(NSDate *)date {
-    
-    NSTimeInterval interval = [date timeIntervalSince1970];
-    NSString *intervalStr = [NSString stringWithFormat:@"%.3fms", interval * 1000];
-    
-    return [NSString stringWithFormat:@"%@", intervalStr];
+    NSTimeInterval ts = [[NSDate date] timeIntervalSince1970];
+    NSLog(@"---QiCADisplayLink--->>%ld  %.5f", (long)_count++, ts - _lastTS);
+    _lastTS = ts;
 }
 
 @end

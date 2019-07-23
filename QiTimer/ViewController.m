@@ -76,17 +76,17 @@
 //    _timer = [[QiNSTimer alloc] init];
 //    [_timer resumeTimer];
 
-    // QiGCDTimer
-    _gcdTimer = [QiGCDTimer scheduledTimerWithTimeInterval:0.0001 repeats:YES queue:dispatch_get_main_queue() block:^{
-        
-    }];
+//    // QiGCDTimer
+//    _gcdTimer = [QiGCDTimer scheduledTimerWithTimeInterval:0.0001 repeats:YES queue:dispatch_get_main_queue() block:^{
+//
+//    }];
 
     
-//    // QiCADisplayLink
-//    _caDisplayLink = [[QiCADisplayLink alloc] init];
-//    [_caDisplayLink startCADisplayLinkTimer];
-//
-//
+    // QiCADisplayLink
+    _caDisplayLink = [[QiCADisplayLink alloc] init];
+    [_caDisplayLink resumeDisplayLink];
+
+
 //    // TPPreciseTimer
 //    [self testTPPreciseTimer];
 }

@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QiCADisplayLink : NSObject
 
-- (void)startCADisplayLinkTimer;
+- (void)resumeDisplayLink;
+
+- (void)pauseDisplayLink;
 
 @end
 
