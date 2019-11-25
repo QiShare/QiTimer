@@ -30,9 +30,9 @@
         [self pauseTimer];
     }
     _timer = [NSTimer scheduledTimerWithTimeInterval:QiNSTimerInterval target:self selector:@selector(onTimeout:) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-    [[NSRunLoop currentRunLoop] run];
-    [_timer fire];
+//    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+//    [[NSRunLoop currentRunLoop] run];
+//    [_timer fire];
 }
 
 - (void)pauseTimer {
